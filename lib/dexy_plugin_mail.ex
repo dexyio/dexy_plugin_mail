@@ -1,6 +1,6 @@
 defmodule DexyPluginMail do
 
-  @adapter Application.get_env(:dexy_lib, __MODULE__)[:adapter]
+  @adapter Application.get_env(:dexy_plugin_mail, __MODULE__)[:adapter]
     || __MODULE__.Adapters.Bamboo
 
   defmodule Adapter do
