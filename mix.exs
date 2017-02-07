@@ -31,6 +31,7 @@ defmodule DexyPluginMail.Mixfile do
       {:dexy_lib, github: "dexyio/dexy_lib"},
 
       # adapters
+      {:gen_smtp, github: "Vagabond/gen_smtp"},
       {:bamboo, "~> 0.7"},
     ]
   end
