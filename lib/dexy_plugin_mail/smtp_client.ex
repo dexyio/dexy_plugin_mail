@@ -43,23 +43,23 @@ defmodule DexyPluginMail.SMTPClient do
   end
 
   def to_struct(props) when is_map(props) do
-    to_list = (props["to"] || throw :smtp_to_required) |> addr_list
+    to_list = (props["to"] || throw "smtp_to_required") |> addr_list
     cc_list = (props["cc"] || []) |> addr_list
     to_addrs = to_list ++ cc_list 
     %__MODULE__{
-      from_addr: (props["from"] || throw :smtp_from_required) |> addr_list |> List.first,
+      from_addr: (props["from"] || throw "smtp_from_required") |> addr_list |> List.first,
       to_addrs: to_addrs,
       from: props["from"] |> fix_from,
       to: props["to_alias"] || (props["to"] |> fix_to),
       cc: props["cc"],
-      subject: (props["subject"] || throw :smtp_subject_required),
+      subject: (props["subject"] || throw "smtp_subject_required"),
       content_type: props["content-type"] || props["content_type"],
       body: props["body"],
 
-      relay: (props["relay"] || throw :smtp_relay_required),
-      port: (props["port"] || throw :smtp_port_required),
-      username: (props["username"] || throw :smtp_username_required),
-      password: (props["password"] || throw :smtp_password_required),
+      relay: (props["relay"] || throw "smtp_relay_required"),
+      port: (props["port"] || throw "smtp_port_required"),
+      username: (props["username"] || throw "smtp_username_required"),
+      password: (props["password"] || throw "smtp_password_required"),
     }
   end
 
